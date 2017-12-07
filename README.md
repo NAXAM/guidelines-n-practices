@@ -1,5 +1,7 @@
+<img src="./art/repo_header.png" alt="NAXAM Guidelines and Practices" width="728" />
+
 # NAXAM PRACTICAL PRACTICES
-This repository contains and describes all guidelines and practical practices used in NAXAM projects.
+This repository contains and describes all guidelines and practices used in NAXAM projects.
 
 ## OVERVIEW
 NAXAM doesn't re-create the wheel, NAXAM patterns and practices are all based on well-known patterns and practices for .NET and mobile applications released by Microsoft and other communities/companies.
@@ -7,7 +9,7 @@ NAXAM doesn't re-create the wheel, NAXAM patterns and practices are all based on
 All NAXAM projects must follow these references and customized practices:
 - [Aviva C# Guidelines v5](https://github.com/dennisdoomen/CSharpGuidelines/releases/tag/5.0.0)
 - [Microsoft Patterns & Practices](https://msdn.microsoft.com/en-us/library/ff921345.aspx)
-- [.NET Application Architecture] (https://www.microsoft.com/net/learn/architecture)
+- [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)
 
 ## PRACTICES
 1. [Class Layout](./class-layout.md)

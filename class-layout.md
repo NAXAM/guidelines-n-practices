@@ -25,49 +25,51 @@ NOTE:
 3. Property members  must be created by using pre-defined snippets inside VisualStudio or listed in [MVVM Common Snippets](./mvvm-common-snippets.md#common-blocks)
 
 ```c#
-class SampleClass {
-    public const string StaticReadOnlyPublicField;
-    protected const string StaticReadOnlyProtectedField;
-    const string staticReadOnlyPrivateField;
+namespace Naxam.Practices {
+    class SampleClass {
+        public const string StaticReadOnlyPublicField;
+        protected const string StaticReadOnlyProtectedField;
+        const string staticReadOnlyPrivateField;
 
-    public static readonly string StaticReadOnlyPublicField;
-    protected static readonly string StaticReadOnlyProtectedField;
-    static readonly string staticReadOnlyPrivateField;
+        public static readonly string StaticReadOnlyPublicField;
+        protected static readonly string StaticReadOnlyProtectedField;
+        static readonly string staticReadOnlyPrivateField;
 
-    public static void StaticPublicMethod() {}
-    protected static void StaticProtectedMethod() {}
-    static void StaticPrivateMethod() {}
+        public static void StaticPublicMethod() {}
+        protected static void StaticProtectedMethod() {}
+        static void StaticPrivateMethod() {}
 
-    public event EventHanlder PublicEvent;
-    protected event EventHanlder ProtectedEvent;
-    event EventHanlder PrivateEvent;
+        public event EventHanlder PublicEvent;
+        protected event EventHanlder ProtectedEvent;
+        event EventHanlder PrivateEvent;
 
-    public string PublicProperty { get; set; }
-    string _PublicPropertyWithBackingField;
-    public string PublicPropertyWithBackingField 
-    { 
-        get => _PublicPropertyWithBackingField; 
-        set => _PublicPropertyWithBackingField = value; 
+        public string PublicProperty { get; set; }
+        string _PublicPropertyWithBackingField;
+        public string PublicPropertyWithBackingField 
+        { 
+            get => _PublicPropertyWithBackingField; 
+            set => _PublicPropertyWithBackingField = value; 
+        }
+        protected string ProtectedProperty { get; set; }
+        protected string protectedField;
+        protected readonly string protectedReadonlyField;
+        string privateField;
+
+        public SampleClass(string arg1, string arg2) {}
+        public SampleClass(string arg1) {}
+        public SampleClass() {}
+
+        public string MethodPublic() {}
+        public string MethodProtected() {}
+        string MethodPrivate() {}
+
+        ICommand _NameCommand;
+        public ICommand NameCommand
+        {
+            get {  return (_NameCommand = _NameCommand ?? new Command<object>(ExecuteNameCommand, CanExecuteNameCommand)); }
+        }
+        bool CanExecute$name$Command(object parameter) { return true; }
+        void Execute$name$Command(object parameter) {}
     }
-    protected string ProtectedProperty { get; set; }
-    protected string protectedField;
-    protected readonly string protectedReadonlyField;
-    string privateField;
-
-    public SampleClass(string arg1, string arg2) {}
-    public SampleClass(string arg1) {}
-    public SampleClass() {}
-
-    public string MethodPublic() {}
-    public string MethodProtected() {}
-    string MethodPrivate() {}
-
-    ICommand _NameCommand;
-    public ICommand NameCommand
-    {
-        get {  return (_NameCommand = _NameCommand ?? new Command<object>(ExecuteNameCommand, CanExecuteNameCommand)); }
-    }
-    bool CanExecute$name$Command(object parameter) { return true; }
-    void Execute$name$Command(object parameter) {}
 }
 ```

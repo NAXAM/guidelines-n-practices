@@ -2,9 +2,9 @@
 This contains snippets for base classes/common blocks using while developing .NET application using MVVM design pattern.
 
 1. Base classes
-- [Without framework](#without-framework)
-- [With MvvmCross](#with-mvvmcross)
-- [With Prism](#with-prism)
+    - [Without framework](#without-framework)
+    - [With MvvmCross](#with-mvvmcross)
+    - [With Prism](#with-prism)
 2. Common blocks
 
 ## Base classes
