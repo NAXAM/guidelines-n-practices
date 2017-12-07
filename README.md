@@ -1,6 +1,6 @@
 <img src="./art/repo_header.png" alt="NAXAM Guidelines and Practices" width="728" />
 
-# NAXAM PRACTICAL PRACTICES
+# NAXAM GUIDELINES & PRACTICES
 This repository contains and describes all guidelines and practices used in NAXAM projects.
 
 ## OVERVIEW
