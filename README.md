@@ -8,6 +8,8 @@ NAXAM doesn't re-create the wheel, NAXAM patterns and practices are all based on
 
 All NAXAM projects must follow these references and customized practices:
 - [Aviva C# Guidelines v5](https://github.com/dennisdoomen/CSharpGuidelines/releases/tag/5.0.0)
+
+All NAXAM members are strongly recommended to read and understand these references to empower their skills and software development knowledge.
 - [Microsoft Patterns & Practices](https://msdn.microsoft.com/en-us/library/ff921345.aspx)
 - [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)
 
