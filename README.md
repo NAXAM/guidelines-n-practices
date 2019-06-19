@@ -19,6 +19,8 @@ All NAXAM members are strongly recommended to read and understand these referenc
 3. Using HttpClient and Authorization
 4. Customizing Prism NavigationService
 5. Customizing MvvmCross MvxPresenter
+6. [UI Control Naming Convention](./ui-control-name.md)
+7. [Localized Resource Naming Convention](./localized-resources.md)
 
 ## LICENSE
 The guidelines and pratices is licensed under [GNU LESSER GENERAL PUBLIC LICENSE](./LICENSE).
