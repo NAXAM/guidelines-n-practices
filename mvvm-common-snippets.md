@@ -162,7 +162,7 @@ void Execute$name$Command($type$ parameter) {}
 - `cprop` - Create new command property with only Execute method
 ```C#
 ICommand _$name$Command;
-public ICommand $name$Command => return (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command)); 
+public ICommand $name$Command => (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command)); 
 void Execute$name$Command($type$ parameter) {}
 ```
 
@@ -200,10 +200,6 @@ public static readonly BindableProperty $Name$Property = BindableProperty.Create
     typeof($Class$),
     default($Type$),
     BindingMode.OneWay);
-public static $Type$ Get$Name$(BindableObject obj) {
-    return ($Type$)obj.GetValue($Name$Property);
-}
-public static void Set$Name$(BindableObject obj, $Type$ value) {
-    obj.SetValue($Name$Property, value);
-}
+public static $Type$ Get$Name$(BindableObject obj) => ($Type$)obj.GetValue($Name$Property);
+public static void Set$Name$(BindableObject obj, $Type$ value)  => obj.SetValue($Name$Property, value);
 ```
