@@ -154,10 +154,7 @@ namespace Naxam.Practices {
 - `cpropf` - Create new command property with both CanExecute and Execute methods
 ```C#
 ICommand _$name$Command;
-public ICommand $name$Command
-{
-    get {  return (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command, CanExecute$name$Command)); }
-}
+public ICommand $name$Command => (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command, CanExecute$name$Command)); 
 bool CanExecute$name$Command($type$ parameter) { return true; }
 void Execute$name$Command($type$ parameter) {}
 ```
@@ -165,10 +162,7 @@ void Execute$name$Command($type$ parameter) {}
 - `cprop` - Create new command property with only Execute method
 ```C#
 ICommand _$name$Command;
-public ICommand $name$Command
-{
-    get {  return (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command)); }
-}
+public ICommand $name$Command => return (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command)); 
 void Execute$name$Command($type$ parameter) {}
 ```
 
@@ -181,6 +175,7 @@ public $type$ $name$
     set => SetProperty(ref _$name$, value);
 }
 ```
+*NOTE* Don't define `oprop` if we are using `PropertyChanged.Fody` package
 
 - `bprop` - Creaet new bindable property
 ```c#
@@ -192,7 +187,23 @@ public static readonly BindableProperty $Name$Property = BindableProperty.Create
     BindingMode.OneWay);
 public $Type$ $Name$
 {
-    get { return ($Type$)GetValue($Name$Property); }
-    set { SetValue($Name$Property, value); }
+    get => ($Type$)GetValue($Name$Property);
+    set => SetValue($Name$Property, value);
+}
+```
+
+- `aprop` - Creaet new attached property
+```c#
+public static readonly BindableProperty $Name$Property = BindableProperty.CreateAttached(
+    nameof($Name$),
+    typeof($Type$),
+    typeof($Class$),
+    default($Type$),
+    BindingMode.OneWay);
+public static $Type$ Get$Name$(BindableObject obj) {
+    return ($Type$)obj.GetValue($Name$Property);
+}
+public static void Set$Name$(BindableObject obj, $Type$ value) {
+    obj.SetValue($Name$Property, value);
 }
 ```

@@ -60,14 +60,11 @@ namespace Naxam.Practices {
         public SampleClass() {}
 
         public string MethodPublic() {}
-        public string MethodProtected() {}
+        protected string MethodProtected() {}
         string MethodPrivate() {}
 
         ICommand _NameCommand;
-        public ICommand NameCommand
-        {
-            get {  return (_NameCommand = _NameCommand ?? new Command<object>(ExecuteNameCommand, CanExecuteNameCommand)); }
-        }
+        public ICommand NameCommand => (_NameCommand = _NameCommand ?? new Command<object>(ExecuteNameCommand, CanExecuteNameCommand));
         bool CanExecute$name$Command(object parameter) { return true; }
         void Execute$name$Command(object parameter) {}
     }
