@@ -45,8 +45,7 @@ namespace Naxam.Practices {
 
         public string PublicProperty { get; set; }
         string _PublicPropertyWithBackingField;
-        public string PublicPropertyWithBackingField 
-        { 
+        public string PublicPropertyWithBackingField { 
             get => _PublicPropertyWithBackingField; 
             set => _PublicPropertyWithBackingField = value; 
         }
