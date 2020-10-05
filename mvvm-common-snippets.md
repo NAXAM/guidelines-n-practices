@@ -232,3 +232,24 @@ public static readonly BindableProperty $Name$Property = BindableProperty.Create
 public static $Type$ Get$Name$(BindableObject obj) => ($Type$)obj.GetValue($Name$Property);
 public static void Set$Name$(BindableObject obj, $Type$ value)  => obj.SetValue($Name$Property, value);
 ```
+
+## Visual Studio Configuration
+
+### Visual Studio for Mac
+
+1. Open VSfMac Preference pane
+
+<img src="./art/vsfmac.preferences.png" title="Visual Studio for Mac - Preferences" />
+
+2. Add or Edit
+> Text Editor > Code Snippets > Add (or Edit)
+
+<img src="./art/vsfmac.preferences.texteditor.codesnippets.png" title="Visual Studio for Mac - Preferences Text Editor Code Snippets" />
+
+3. Snippet Editor
+
+<img src="./art/vsfmac.preferences.texteditor.codesnippets.editor.png"  title="Visual Studio for Mac - Preferences Text Editor Code Snippets Editor" />
+
+### Visual Studio for Windows
+
+> Tobe defined
