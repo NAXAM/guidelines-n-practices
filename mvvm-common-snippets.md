@@ -4,6 +4,7 @@ This contains snippets for base classes/common blocks using while developing .NE
 1. Base classes
     - [Without framework](#without-framework)
     - [With MvvmCross](#with-mvvmcross)
+    - [With FreshMvvm](#with-freshmvvm)
     - [With Prism](#with-prism)
 2. Common blocks
 
@@ -11,21 +12,22 @@ This contains snippets for base classes/common blocks using while developing .NE
 ### Without framework
 - ModelBase
 ```C#
-namespace Naxam.Practices {
+namespace Naxam.Practices 
+{
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
+    // Use PropertyChanged.Fody to simply property declaration
+    [AddINotifyPropertyChangedInterface]
     public abstract class ModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaisePropertyChanged([CallerMemberName]string propertyName = null)
-        {
+        protected void RaisePropertyChanged([CallerMemberName]string propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected void SetProperty<T>(ref T property, T newValue, [CallerMemberName]string propertyName = null)
-        {
+        protected void SetProperty<T>(ref T property, T newValue, [CallerMemberName]string propertyName = null) {
             if (Equals(property, newValue)) return;
 
             property = newValue;
@@ -38,10 +40,13 @@ namespace Naxam.Practices {
 
 - ViewModelBase
 ```C#
-namespace Naxam.Practices {
+namespace Naxam.Practices 
+{
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
+    // Use PropertyChanged.Fody to simply property declaration
+    [AddINotifyPropertyChangedInterface]
     public abstract class ViewModelModelBase : ModelBase
     {
     }
@@ -51,9 +56,12 @@ namespace Naxam.Practices {
 ### With MvvmCross
 - ModelBase
 ```C#
-namespace Naxam.Practices {
+namespace Naxam.Practices 
+{
     using MvvmCross.Core.ViewModels;
 
+    // Use PropertyChanged.Fody to simply property declaration
+    [AddINotifyPropertyChangedInterface]
     public abstract class ModelBase : MvxNotifyPropertyChanged
     {
     }
@@ -62,10 +70,38 @@ namespace Naxam.Practices {
 
 - ViewModelBase
 ```C#
-namespace Naxam.Practices {
+namespace Naxam.Practices 
+{
     using MvvmCross.Core.ViewModels;
 
+    // Use PropertyChanged.Fody to simply property declaration
+    [AddINotifyPropertyChangedInterface]
     public abstract class ViewModelBase : MvxViewModel
+    {
+    }
+}
+```
+
+### With FreshMvvm
+- ModelBase
+```C#
+namespace Naxam.Practices 
+{
+    // Use PropertyChanged.Fody to simply property declaration
+    [AddINotifyPropertyChangedInterface]
+    public abstract class ModelBase
+    {
+    }
+}
+```
+
+- ViewModelBase
+```C#
+namespace Naxam.Practices 
+{
+    using FreshMvvm;
+
+    public abstract class ViewModelBase : FreshBasePageModel
     {
     }
 }
@@ -74,7 +110,8 @@ namespace Naxam.Practices {
 ### With Prism
 - ModelBase
 ```C#
-namespace Naxam.Practices {
+namespace Naxam.Practices 
+{
     using Prism.Mvvm;
 
     public abstract class ModelBase : BindableBase
@@ -85,23 +122,21 @@ namespace Naxam.Practices {
 
 - ViewModelBase
 ```C#
-namespace Naxam.Practices {
+namespace Naxam.Practices 
+{
     using Prism;
     using Prism.Mvvm;
     using Prism.Navigation;
 
     public abstract class ViewModelBase : ModelBase, INavigationAware
     {
-        public virtual void OnNavigatedFrom(NavigationParameters parameters)
-        {
+        public virtual void OnNavigatedFrom(NavigationParameters parameters) {
         }
 
-        public virtual void OnNavigatedTo(NavigationParameters parameters)
-        {
+        public virtual void OnNavigatedTo(NavigationParameters parameters) {
         }
 
-        public virtual void OnNavigatingTo(NavigationParameters parameters)
-        {
+        public virtual void OnNavigatingTo(NavigationParameters parameters) {
         }
     }
 
@@ -110,27 +145,22 @@ namespace Naxam.Practices {
         public event EventHandler IsActiveChanged;
 
         bool _IsActive;
-        public bool IsActive
-        {
+        public bool IsActive {
             get => _IsActive;
-            set
-            {
+            set {
                 SetProperty(ref _IsActive, value, HandleIsActiveChanged);
             }
         }
 
         protected bool HasInitialized { get; set; }
 
-        public virtual void OnActiveChanged(IsActiveChangedEventArgs args)
-        {
+        public virtual void OnActiveChanged(IsActiveChangedEventArgs args) {
         }
     
-        public virtual void Destroy()
-        {
+        public virtual void Destroy() {
         }
 
-        void HandleIsActiveChanged()
-        {
+        void HandleIsActiveChanged() {
             OnActiveChanged(new IsActiveChangedEventArgs(IsActive));
             IsActiveChanged?.Invoke(this, new IsActiveChangedEventArgs(IsActive));
         }
@@ -140,8 +170,7 @@ namespace Naxam.Practices {
     {
         public bool IsActive { get; private set; }
 
-        public IsActiveChangedEventArgs(bool isActive)
-        {
+        public IsActiveChangedEventArgs(bool isActive) {
             IsActive = isActive;
         }
     }
@@ -154,7 +183,8 @@ namespace Naxam.Practices {
 - `cpropf` - Create new command property with both CanExecute and Execute methods
 ```C#
 ICommand _$name$Command;
-public ICommand $name$Command => (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command, CanExecute$name$Command)); 
+public ICommand $name$Command => _$name$Command 
+    ??= new Command<$type$>(Execute$name$Command, CanExecute$name$Command); 
 bool CanExecute$name$Command($type$ parameter) { return true; }
 void Execute$name$Command($type$ parameter) {}
 ```
@@ -162,15 +192,15 @@ void Execute$name$Command($type$ parameter) {}
 - `cprop` - Create new command property with only Execute method
 ```C#
 ICommand _$name$Command;
-public ICommand $name$Command => (_$name$Command = _$name$Command ?? new Command<$type$>(Execute$name$Command)); 
+public ICommand $name$Command => _$name$Command 
+    ??= new Command<$type$>(Execute$name$Command); 
 void Execute$name$Command($type$ parameter) {}
 ```
 
 - `oprop` - Create new observable property
 ```C#
 $type$ _$name$;
-public $type$ $name$ 
-{
+public $type$ $name$ {
     get => _$name$;
     set => SetProperty(ref _$name$, value);
 }
@@ -185,8 +215,7 @@ public static readonly BindableProperty $Name$Property = BindableProperty.Create
     typeof($Class$),
     default($Type$),
     BindingMode.OneWay);
-public $Type$ $Name$
-{
+public $Type$ $Name$ {
     get => ($Type$)GetValue($Name$Property);
     set => SetValue($Name$Property, value);
 }
