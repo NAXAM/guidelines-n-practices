@@ -239,16 +239,16 @@ public static void Set$Name$(BindableObject obj, $Type$ value)  => obj.SetValue(
 
 1. Open VSfMac Preference pane
 
-<img src="./art/vsfmac.preferences.PNG" title="Visual Studio for Mac - Preferences" />
+<img src="./art/vsfmac.preferences.png" title="Visual Studio for Mac - Preferences" />
 
 2. Add or Edit
 > Text Editor > Code Snippets > Add (or Edit)
 
-<img src="./art/vsfmac.preferences.texteditor.codesnippets.PNG" title="Visual Studio for Mac - Preferences Text Editor Code Snippets" />
+<img src="./art/vsfmac.preferences.texteditor.codesnippets.png" title="Visual Studio for Mac - Preferences Text Editor Code Snippets" />
 
 3. Snippet Editor
 
-<img src="./art/vsfmac.preferences.texteditor.codesnippets.editor.PNG"  title="Visual Studio for Mac - Preferences Text Editor Code Snippets Editor" />
+<img src="./art/vsfmac.preferences.texteditor.codesnippets.editor.png"  title="Visual Studio for Mac - Preferences Text Editor Code Snippets Editor" />
 
 ### Visual Studio for Windows
 
