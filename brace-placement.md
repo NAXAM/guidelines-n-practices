@@ -128,5 +128,12 @@ task.ContinueWith(t => {
 
 ### Visual Studio for Windows
 
-> Tobe defined
+1. Open Visual Studio Tools Options window
+
+<img src="./art/visualstudio.tools.options.PNG" title="Visual Studio - Tools Options" />
+
+2. Set the rules
+> Text Editor > C# > Formatting > New Lines
+
+<img src="./art/visualstudio.tools.texteditor.csharp.codestyle.formatting.newlines.PNG" title="Visual Studio - Tools Text Editor C# Formatting New lines" />
 
